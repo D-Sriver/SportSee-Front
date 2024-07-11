@@ -6,23 +6,23 @@ import yoga from '/img/yoga.png';
 
 export default function SideMenu() {
 	return (
-		<div className="h-[calc(100vh-80px)] bg-black w-28 flex flex-col items-center justify-evenly">
-			<section className="gap-4 flex flex-col items-center justify-evenly">
+		<div className="flex flex-col w-28 bg-black ">
+			<section className="flex-1 gap-4 flex flex-col items-center justify-center">
 				<Link to="/">
 					<img src={yoga} alt="Icon de yoga" className="h-20" />
 				</Link>
-				<Link to="/">
+				<Link to="/swim">
 					<img src={swim} alt="Icon de natation" className="h-20" />
 				</Link>
-				<Link to="/">
+				<Link to="/velo">
 					<img src={cycling} alt="Icon de cyclisme" className="h-20" />
 				</Link>
-				<Link to="/">
+				<Link to="/gym">
 					<img src={gym} alt="Icon de gym" className="h-20" />
 				</Link>
 			</section>
 			<section>
-				<p className="text-white text-xs -rotate-90 w-80 flex justify-start">
+				<p className=" text-white text-sm whitespace-nowrap relative bottom-20 -rotate-90">
 					Copyright, SportSee 2020
 				</p>
 			</section>

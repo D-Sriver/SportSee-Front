@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import App from './App.tsx';
+import Layout from './components/Layout';
 import './index.css';
+import NotFound from './pages/NotFound.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
@@ -11,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 			<Routes>
 				<Route element={<Layout />}>
 					<Route path="/" element={<App />} />
-					{/* Ajoutez d'autres routes ici si nécessaire */}
+					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
 		</Router>

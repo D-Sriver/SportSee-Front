@@ -7,9 +7,9 @@ export default function Header() {
 			<img src={logo} alt="logo" className="w-48 h-15" />
 			<nav className="flex w-full justify-evenly p-4">
 				<Link to="/">Accueil</Link>
-				<Link to="/">Profil</Link>
-				<Link to="/">Réglage</Link>
-				<Link to="/">Communauté</Link>
+				<Link to="/profile">Profil</Link>
+				<Link to="/settings">Réglage</Link>
+				<Link to="/community">Communauté</Link>
 			</nav>
 		</div>
 	);
