@@ -7,7 +7,10 @@ import { fetchUserMainData } from './data/fetch';
 import { UserMainData } from './interface/fetch_interface';
 
 const UserId: number[] = [12, 18];
-
+/**
+ * Composant principal de l'application.
+ * @returns {JSX.Element} Le composant App.
+ */
 export default function App() {
 	const [userData, setUserData] = useState<UserMainData | null>(null);
 
@@ -35,7 +38,7 @@ export default function App() {
 						<GraphicDetail />
 					</div>
 				</div>
-				<NutritionalValue />
+				<NutritionalValue userData={userData} />
 			</div>
 		</>
 	);

@@ -1,9 +1,11 @@
+import { NutritionalValueProps } from '../interface/fetch_interface';
 import calories from '/img/calories.png';
 import glucides from '/img/glucides.png';
 import lipides from '/img/lipides.png';
 import proteines from '/img/proteines.png';
 
-export default function NutritionalValue() {
+// Affiche les valeurs nutritionnelles depuis le props userData
+export default function NutritionalValue({ userData }: NutritionalValueProps) {
 	return (
 		<div className="flex flex-col w-1/3 justify-between rounded-lg gap-8">
 			<div className="flex items-center gap-4 bg-zinc-50 rounded-lg p-7">
@@ -15,7 +17,9 @@ export default function NutritionalValue() {
 					/>
 				</div>
 				<div className="flex flex-col justify-center">
-					<p className="font-bold text-lg">1,930 kCal</p>
+					<p className="font-bold text-lg">
+						{userData?.keyData.calorieCount ?? 0} kCal
+					</p>
 					<p className="text-sm text-gray-500">Calories</p>
 				</div>
 			</div>
@@ -28,7 +32,7 @@ export default function NutritionalValue() {
 					/>
 				</div>
 				<div className="flex flex-col justify-center">
-					<p className="font-bold">155 g</p>
+					<p className="font-bold">{userData?.keyData.proteinCount ?? 0} g</p>
 					<p className="text-sm text-gray-500">Protéines</p>
 				</div>
 			</div>
@@ -41,7 +45,9 @@ export default function NutritionalValue() {
 					/>
 				</div>
 				<div>
-					<p className="font-bold">290 g</p>
+					<p className="font-bold">
+						{userData?.keyData.carbohydrateCount ?? 0} g
+					</p>
 					<p>Glucides</p>
 				</div>
 			</div>
@@ -54,7 +60,7 @@ export default function NutritionalValue() {
 					/>
 				</div>
 				<div>
-					<p className="font-bold">50 g</p>
+					<p className="font-bold">{userData?.keyData.lipidCount ?? 0} g</p>
 					<p>Lipides</p>
 				</div>
 			</div>
