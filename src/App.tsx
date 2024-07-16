@@ -29,7 +29,7 @@ export default function App() {
 			<div className="flex flex-row p-7 gap-8 justify-between">
 				<div className="flex flex-col w-full gap-8">
 					<div className="flex flex-row">
-						<ActivityChart />
+						<ActivityChart userId={userData?.id ?? undefined} />{' '}
 					</div>
 					<div className="flex flex-row">
 						<GraphicDetail />
