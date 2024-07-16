@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ActivityChart from './components/ActivityChart';
-import GraphicDetail from './components/GraphicDetail';
+import GraphicDetail from './components/GraphicDetail/GraphicDetail';
 import Hero from './components/Hero';
 import NutritionalValue from './components/NutritionalValue';
 import { fetchUserMainData } from './data/fetch';
@@ -35,7 +35,7 @@ export default function App() {
 						<ActivityChart userId={userData?.id ?? undefined} />{' '}
 					</div>
 					<div className="flex flex-row">
-						<GraphicDetail />
+						<GraphicDetail userId={userData?.id} />
 					</div>
 				</div>
 				<NutritionalValue userData={userData} />
