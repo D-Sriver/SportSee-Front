@@ -39,7 +39,12 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
 	return null;
 };
 
-// Composant principal d'ActivityChart
+/**
+ * Composant ActivityChart qui affiche un graphique d'activité de l'utilisateur.
+ * @param {ActivityChartProps} props - Les propriétés du composant.
+ * @param {number | undefined} props.userId - L'ID de l'utilisateur.
+ * @returns {JSX.Element} Le composant ActivityChart.
+ */
 const ActivityChart = ({ userId }: ActivityChartProps) => {
 	// UseState pour stocker les données d'activité s'il y en a
 	const [activityData, setActivityData] = useState<UserActivity | null>(null);
@@ -110,6 +115,9 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 						hide
 						domain={[0, 'dataMax + 50']}
 					/>
+					{/* Tooltip personnalisé */}
+					<Tooltip content={<CustomTooltip />} />
+					{/* Barre pour le poids */}
 					<Bar
 						yAxisId="kilogram"
 						dataKey="kilogram"
@@ -127,9 +135,6 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 						radius={[10, 10, 0, 0]}
 						activeBar={<Rectangle fill="#E60000" stroke="#E60000" />}
 					/>
-					{/* Tooltip personnalisé */}
-					<Tooltip content={<CustomTooltip />} />
-					{/* Barre pour le poids */}
 				</BarChart>
 			</ResponsiveContainer>
 		</div>
