@@ -6,7 +6,11 @@ import {
 } from '../interface/fetch_interface';
 import { mockData } from '../mock/mockData';
 
-// Fonction FetchUserMainData pour récupérer les données de l'utilisateur.
+/**
+ * Récupère les données principales de l'utilisateur.
+ * @param userId - L'ID de l'utilisateur.
+ * @throws {Error} Si l'utilisateur n'est pas trouvé.
+ */
 export const fetchUserMainData = async (
 	userId: number
 	// promise qui retourne les données de l'utilisateur

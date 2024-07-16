@@ -1,12 +1,20 @@
+/**
+ * Interface représentant les données principales d'un utilisateur.
+ */
 interface UserMainData {
+	/** L'ID de l'utilisateur */
 	id: number;
+	/** Les informations de l'utilisateur */
 	userInfos: {
 		firstName: string;
 		lastName: string;
 		age: number;
 	};
+	/** Le score du jour  */
 	todayScore?: number;
+	/** Le score global */
 	score?: number;
+	/** Les données clés de l'utilisateur */
 	keyData: {
 		calorieCount: number;
 		proteinCount: number;
@@ -43,7 +51,12 @@ interface UserPerformance {
 	}[];
 }
 
+interface NutritionalValueProps {
+	userData: UserMainData | null;
+}
+
 export type {
+	NutritionalValueProps,
 	UserActivity,
 	UserAverageSessions,
 	UserMainData,

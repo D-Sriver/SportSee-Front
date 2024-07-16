@@ -3,7 +3,12 @@ import { UserMainData } from '../interface/fetch_interface';
 interface HeroProps {
 	userData: UserMainData | null;
 }
-
+/**
+ * Composant Hero qui affiche un message de bienvenue à l'utilisateur.
+ * @param {HeroProps} props - Les propriétés du composant.
+ * @param {UserMainData | null} props.userData - Les données de l'utilisateur.
+ * @returns {JSX.Element} Le composant Hero.
+ */
 export default function Hero({ userData }: HeroProps) {
 	return (
 		<div className=" flex flex-col p-10">
