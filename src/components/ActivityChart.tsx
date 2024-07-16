@@ -116,7 +116,10 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 						domain={[0, 'dataMax + 50']}
 					/>
 					{/* Tooltip personnalisé */}
-					<Tooltip content={<CustomTooltip />} />
+					<Tooltip
+						content={<CustomTooltip />}
+						cursor={{ fill: '#C4C4C4', fillOpacity: 0.5 }}
+					/>
 					{/* Barre pour le poids */}
 					<Bar
 						yAxisId="kilogram"
