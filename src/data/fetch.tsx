@@ -28,22 +28,15 @@ export const fetchUserMainData = async (
 export const fetchUserActivity = async (
 	userId: number
 ): Promise<UserActivity> => {
-	try {
-		const activityData = mockData.USER_ACTIVITY.find(
-			(activity) => activity.userId === userId
+	const activityData = mockData.USER_ACTIVITY.find(
+		(activity) => activity.userId === userId
+	);
+	if (!activityData) {
+		throw new Error(
+			`Données d'activité non trouvées pour l'utilisateur ${userId}`
 		);
-		if (!activityData) {
-			throw new Error(
-				`Données d'activité non trouvées pour l'utilisateur ${userId}`
-			);
-		}
-		return activityData;
-	} catch (error) {
-		console.error(
-			`Erreur lors de la récupération des données d'activité: ${error}`
-		);
-		throw error;
 	}
+	return activityData;
 };
 
 export const fetchUserAverageSessions = async (
