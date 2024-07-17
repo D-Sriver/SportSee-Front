@@ -9,7 +9,7 @@ export default function NutritionalValue({ userData }: NutritionalValueProps) {
 	return (
 		<div className="flex flex-col w-1/3 justify-between rounded-lg gap-8">
 			<div className="flex items-center gap-4 h-1/4 bg-zinc-50 rounded-lg p-7">
-				<div className="w-1/4 h-full flex items-center justify-center">
+				<div className="w-1/3 h-full flex items-center justify-center">
 					<img
 						src={calories}
 						alt="Calories"
@@ -24,7 +24,7 @@ export default function NutritionalValue({ userData }: NutritionalValueProps) {
 				</div>
 			</div>
 			<div className="flex items-center gap-4 h-1/4 bg-zinc-50 rounded-lg p-7">
-				<div className="w-1/4 h-full flex items-center justify-center">
+				<div className="w-1/3 h-full flex items-center justify-center">
 					<img
 						src={proteines}
 						alt="Protéines"
@@ -37,7 +37,7 @@ export default function NutritionalValue({ userData }: NutritionalValueProps) {
 				</div>
 			</div>
 			<div className="flex items-center gap-4 h-1/4 bg-zinc-50 rounded-lg p-7">
-				<div className="w-1/4 h-full flex items-center justify-center">
+				<div className="w-1/3 h-full flex items-center justify-center">
 					<img
 						src={glucides}
 						alt="Glucides"
@@ -52,7 +52,7 @@ export default function NutritionalValue({ userData }: NutritionalValueProps) {
 				</div>
 			</div>
 			<div className="flex items-center gap-4 h-1/4 bg-zinc-50 rounded-lg p-7">
-				<div className="w-1/4 h-full flex items-center justify-center">
+				<div className="w-1/3 h-full flex items-center justify-center">
 					<img
 						src={lipides}
 						alt="Lipides"
