@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import ActivityChart from './components/ActivityChart';
+import ActivityChart from './components/ActivityChart/ActivityChart';
 import GraphicDetail from './components/GraphicDetail/GraphicDetail';
 import Hero from './components/Hero';
-import NutritionalValue from './components/NutritionalValue';
+import NutritionalValue from './components/NutritionalValue/NutritionalValue';
 import { fetchUserMainData } from './data/fetch';
 import { UserMainData } from './interface/fetch_interface';
 
