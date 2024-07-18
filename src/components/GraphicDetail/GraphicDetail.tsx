@@ -1,4 +1,5 @@
-import HexaGraphic from './HexaGraphic';
+import HexaGraphic from './Performance';
+import Performance from './Score';
 import TimeSession from './TimeSession';
 
 interface GraphicDetailProps {
@@ -9,8 +10,8 @@ export default function GraphicDetail({ userId }: GraphicDetailProps) {
 	return (
 		<div className="flex w-full gap-8 items-center justify-between">
 			<TimeSession userId={userId} />
-			<HexaGraphic userId={userId} />{' '}
-			<div className="w-full min-h-64 bg-red-600">Score</div>
+			<HexaGraphic userId={userId} />
+			<Performance userId={userId} />{' '}
 		</div>
 	);
 }

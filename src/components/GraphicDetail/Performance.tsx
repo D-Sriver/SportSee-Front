@@ -9,11 +9,11 @@ import {
 import { fetchUserPerformance } from '../../data/fetch';
 import { UserPerformance } from '../../interface/fetch_interface';
 
-interface HexaGraphicProps {
+interface PerformanceProps {
 	userId: number | undefined;
 }
 
-export default function HexaGraphic({ userId }: HexaGraphicProps) {
+export default function Performance({ userId }: PerformanceProps) {
 	const [performanceData, setPerformanceData] =
 		useState<UserPerformance | null>(null);
 
