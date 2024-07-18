@@ -28,14 +28,11 @@ export const fetchUserMainData = async (
 export const fetchUserActivity = async (
 	userId: number
 ): Promise<UserActivity> => {
+	// Simuler une requête API
 	const activityData = mockData.USER_ACTIVITY.find(
 		(activity) => activity.userId === userId
 	);
-	if (!activityData) {
-		throw new Error(
-			`Données d'activité non trouvées pour l'utilisateur ${userId}`
-		);
-	}
+	if (!activityData) throw new Error("Données d'activité non trouvées");
 	return activityData;
 };
 
