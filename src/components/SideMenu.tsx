@@ -8,7 +8,7 @@ export default function SideMenu() {
 	return (
 		<div className="flex flex-col w-28 bg-black ">
 			<section className="flex-1 gap-4 flex flex-col items-center justify-center">
-				<Link to="/">
+				<Link to="/yoga">
 					<img src={yoga} alt="Icon de yoga" className="h-16" />
 				</Link>
 				<Link to="/swim">

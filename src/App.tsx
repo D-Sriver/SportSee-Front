@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ActivityChart from './components/ActivityChart/ActivityChart';
 import GraphicDetail from './components/GraphicDetail/GraphicDetail';
 import Hero from './components/Hero';
@@ -6,40 +7,37 @@ import NutritionalValue from './components/NutritionalValue/NutritionalValue';
 import { fetchUserMainData } from './data/fetch';
 import { UserMainData } from './interface/fetch_interface';
 
-const UserId: number[] = [12, 18];
-/**
- * Composant principal de l'application.
- * @returns {JSX.Element} Le composant App.
- */
 export default function App() {
 	const [userData, setUserData] = useState<UserMainData | null>(null);
+	const location = useLocation();
 
 	useEffect(() => {
 		const getUserData = async () => {
-			// Choisir aléatoirement entre 12 et 18
-			const currentUserId = Math.random() < 0.5 ? UserId[0] : UserId[1];
-			const data = await fetchUserMainData(currentUserId);
-			setUserData(data);
+			const searchParams = new URLSearchParams(location.search);
+			const userId = searchParams.get('userId');
+			if (userId) {
+				const data = await fetchUserMainData(parseInt(userId, 10));
+				setUserData(data);
+			}
 		};
 
 		getUserData();
-	}, []);
+	}, [location]);
+
+	if (!userData) {
+		return <div>Chargement des données...</div>;
+	}
 
 	return (
-		<>
+		<div className="flex flex-col h-full">
 			<Hero userData={userData} />
-
-			<div className="flex flex-row p-7 gap-8 justify-between">
-				<div className="flex flex-col w-full gap-8">
-					<div className="flex flex-row">
-						<ActivityChart userId={userData?.id ?? undefined} />{' '}
-					</div>
-					<div className="flex flex-row">
-						<GraphicDetail userId={userData?.id} />
-					</div>
+			<div className="flex flex-1 gap-8">
+				<div className="flex flex-col w-3/4 gap-8">
+					<ActivityChart userId={userData.id} />
+					<GraphicDetail userId={userData.id} />
 				</div>
 				<NutritionalValue userData={userData} />
 			</div>
-		</>
+		</div>
 	);
 }
