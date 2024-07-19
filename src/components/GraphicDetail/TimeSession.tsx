@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
 	Line,
 	LineChart,
@@ -9,33 +8,14 @@ import {
 	YAxis,
 } from 'recharts';
 import { fetchUserAverageSessions } from '../../data/fetch';
-import { UserAverageSessions } from '../../interface/fetch_interface';
+import useFetchData from '../hook/useFetchData';
 
 interface TimeSessionProps {
 	userId: number | undefined;
 }
 
 export default function TimeSession({ userId }: TimeSessionProps) {
-	const [sessionsData, setSessionsData] = useState<UserAverageSessions | null>(
-		null
-	);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			if (userId !== undefined) {
-				try {
-					const data = await fetchUserAverageSessions(userId);
-					setSessionsData(data);
-				} catch (error) {
-					console.error(
-						'Erreur lors de la récupération des données de sessions moyennes:',
-						error
-					);
-				}
-			}
-		};
-		fetchData();
-	}, [userId]);
+	const sessionsData = useFetchData(fetchUserAverageSessions, userId);
 
 	if (!sessionsData) {
 		return <div>Chargement des données de sessions...</div>;

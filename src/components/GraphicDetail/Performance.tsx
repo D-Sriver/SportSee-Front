@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
 	PolarAngleAxis,
 	PolarGrid,
@@ -8,31 +7,17 @@ import {
 } from 'recharts';
 import { fetchUserPerformance } from '../../data/fetch';
 import { UserPerformance } from '../../interface/fetch_interface';
+import useFetchData from '../hook/useFetchData';
 
-interface PerformanceProps {
+interface Performance {
 	userId: number | undefined;
 }
 
-export default function Performance({ userId }: PerformanceProps) {
-	const [performanceData, setPerformanceData] =
-		useState<UserPerformance | null>(null);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			if (userId !== undefined) {
-				try {
-					const data = await fetchUserPerformance(userId);
-					setPerformanceData(data);
-				} catch (error) {
-					console.error(
-						'Erreur lors de la récupération des données de performance:',
-						error
-					);
-				}
-			}
-		};
-		fetchData();
-	}, [userId]);
+export default function HexaGraphic({ userId }: Performance) {
+	const performanceData = useFetchData<UserPerformance>(
+		fetchUserPerformance,
+		userId
+	);
 
 	if (!performanceData) {
 		return <div>Chargement des données de performance...</div>;

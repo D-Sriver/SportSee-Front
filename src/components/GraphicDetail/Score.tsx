@@ -1,36 +1,18 @@
-import { useEffect, useState } from 'react';
 import {
 	PolarAngleAxis,
 	RadialBar,
 	RadialBarChart,
 	ResponsiveContainer,
 } from 'recharts';
+import useFetchData from '../../components/hook/useFetchData';
 import { fetchUserMainData } from '../../data/fetch';
-import { UserMainData } from '../../interface/fetch_interface';
 
 interface ScoreProps {
 	userId: number | undefined;
 }
 
 export default function Score({ userId }: ScoreProps) {
-	const [userData, setUserData] = useState<UserMainData | null>(null);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			if (userId !== undefined) {
-				try {
-					const data = await fetchUserMainData(userId);
-					setUserData(data);
-				} catch (error) {
-					console.error(
-						'Erreur lors de la récupération des données utilisateur:',
-						error
-					);
-				}
-			}
-		};
-		fetchData();
-	}, [userId]);
+	const userData = useFetchData(fetchUserMainData, userId);
 
 	if (!userData) {
 		return <div>Chargement des données...</div>;
