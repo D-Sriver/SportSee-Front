@@ -4,7 +4,15 @@ import {
 	UserMainData,
 	UserPerformance,
 } from '../interface/fetch_interface';
+import UserModel from '../model/UserModel';
+
 import { mockData } from '../mock/mockData';
+//todo:
+//todo : passer a l'api avec axios
+//todo :crée une page login
+//todo : corriger le linecharts (crop text, color red foncé, ligne )
+//todo : changer hexa intensité
+//todo : Activité quotidienne ,fond , couleur ; bord des graphique et legende
 
 /**
  * Récupère les données principales de l'utilisateur.
@@ -13,22 +21,15 @@ import { mockData } from '../mock/mockData';
  */
 export const fetchUserMainData = async (
 	userId: number
-	// promise qui retourne les données de l'utilisateur
 ): Promise<UserMainData> => {
-	// Recherche les données de l'utilisateur dans le mockData
 	const userData = mockData.USER_MAIN_DATA.find((user) => user.id === userId);
 	if (!userData) throw new Error('Utilisateur non trouvé');
-	return {
-		...userData,
-		// si score ou todayScore manquant, on les remplace par 0
-		score: userData.score ?? userData.todayScore ?? 0,
-	};
+	return new UserModel(userData);
 };
 
 export const fetchUserActivity = async (
 	userId: number
 ): Promise<UserActivity> => {
-	// Simuler une requête API
 	const activityData = mockData.USER_ACTIVITY.find(
 		(activity) => activity.userId === userId
 	);
