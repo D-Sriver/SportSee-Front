@@ -11,7 +11,7 @@ export const NutritionalItem = ({
 	unit,
 	label,
 }: NutritionalItemProps) => (
-	<div className="flex items-center gap-4 h-1/4 bg-zinc-50 rounded-lg p-7">
+	<div className="flex items-center gap-4 bg-zinc-50 rounded-lg p-7">
 		<div className="w-1/3 h-full flex items-center justify-center">
 			<img
 				src={icon}
