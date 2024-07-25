@@ -79,15 +79,33 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 
 	// Rendu du graphique d'activité
 	return (
-		<div className="min-h-80 w-full rounded-lg bg-white p-4">
-			<h2 className="text-lg font-semibold mb-4">Activité quotidienne</h2>
+		<div className="rounded-lg bg-zinc-50 p-4">
+			<div className="flex justify-between items-center">
+				<h2 className=" font-medium">Activité quotidienne</h2>
+				<div className="flex items-center gap-8">
+					<div className="flex items-center">
+						<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
+						<span className="text-sm text-gray-500">Poids (kg)</span>
+					</div>
+					<div className="flex items-center">
+						<span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+						<span className="text-sm text-gray-500">
+							Calories brûlées (kCal)
+						</span>
+					</div>
+				</div>
+			</div>
 
 			{/* Conteneur responsive pour le graphique */}
 			<ResponsiveContainer width="100%" height={300}>
-				{/* Graphique à barres de 6px d'espace entre les barres */}
-				<BarChart data={activityData.sessions} barGap={6}>
+				{/* Graphique à barres */}
+				<BarChart
+					data={activityData.sessions}
+					barGap={8}
+					margin={{ top: 80, right: 0, left: 0, bottom: 0 }}
+				>
 					{/* Grille du graphique */}
-					<CartesianGrid strokeDasharray="3 3" vertical={false} />
+					<CartesianGrid strokeDasharray="1 1" vertical={false} />
 					{/* Axe X (jours) */}
 					<XAxis
 						dataKey="day"
@@ -97,7 +115,10 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 						axisLine={{ stroke: '#DEDEDE' }}
 						tickLine={false}
 						tick={{ fill: '#9B9EAC', fontSize: 14 }}
-						dy={15}
+						dx={0}
+						dy={10}
+						domain={['dataMin - 2', 'dataMax + 2']}
+						padding={{ left: -20, right: -30 }}
 					/>
 					{/* Axe Y pour le poids (kilogrammes) */}
 					<YAxis
@@ -107,7 +128,7 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 						tickLine={false}
 						tick={{ fill: '#9B9EAC', fontSize: 14 }}
 						dx={15}
-						domain={['dataMin - 1', 'dataMax + 2']}
+						domain={['dataMin - 2', 'dataMax + 2']}
 					/>
 					{/* Axe Y pour les calories */}
 					<YAxis
