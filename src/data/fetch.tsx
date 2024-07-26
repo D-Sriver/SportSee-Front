@@ -7,12 +7,8 @@ import {
 import UserModel from '../model/UserModel';
 
 import { mockData } from '../mock/mockData';
-//todo:
 //todo : passer a l'api avec axios
-//todo :crée une page login
-//todo : corriger le linecharts (crop text, color red foncé, ligne )
-//todo : changer hexa intensité
-//todo : Activité quotidienne ,fond , couleur ; bord des graphique et legende
+//todo : changer Hexa intensité
 
 /**
  * Récupère les données principales de l'utilisateur.

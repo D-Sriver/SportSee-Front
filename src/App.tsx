@@ -29,7 +29,7 @@ export default function App() {
 	}
 
 	return (
-		<div className="flex flex-col h-full">
+		<div className="flex flex-col h-[70vh]">
 			<Hero userData={userData} />
 			<div className="flex flex-1 gap-8">
 				<div className="flex flex-col w-3/4 gap-8">

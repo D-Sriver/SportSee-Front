@@ -30,13 +30,13 @@ export default function HexaGraphic({ userId }: Performance) {
 	}));
 
 	return (
-		<div className="w-full max-w-80 max-h-80 aspect-square bg-gray-800 rounded-lg flex flex-col p-4">
+		<div className="w-full max-w-80 max-h-80 aspect-square bg-gray-800 rounded-lg flex flex-col">
 			<ResponsiveContainer width="100%" height="100%">
-				<RadarChart cx="50%" cy="50%" outerRadius="80%" data={formattedData}>
+				<RadarChart cx="50%" cy="50%" outerRadius="70%" data={formattedData}>
 					<PolarGrid />
 					<PolarAngleAxis
 						dataKey="subject"
-						tick={{ fill: '#FFFFFF', fontSize: 12 }}
+						tick={{ fill: '#FFFFFF', fontSize: 10 }}
 					/>
 					<Radar
 						name="Performance"

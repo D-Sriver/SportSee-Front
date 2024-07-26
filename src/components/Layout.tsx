@@ -6,9 +6,9 @@ export default function Layout() {
 	return (
 		<div className="flex flex-col h-screen">
 			<Header />
-			<div className="flex flex-1 overflow-hidden">
+			<div className="flex flex-1">
 				<SideMenu />
-				<main className="flex-grow overflow-auto p-12">
+				<main className="flex-grow p-12">
 					<Outlet />
 				</main>
 			</div>
