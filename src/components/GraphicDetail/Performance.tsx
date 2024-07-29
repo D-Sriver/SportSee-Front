@@ -13,6 +13,19 @@ interface Performance {
 	userId: number | undefined;
 }
 
+const Traduction = {
+	cardio: 'Cardio',
+	energy: 'Énergie',
+	endurance: 'Endurance',
+	strength: 'Force',
+	speed: 'Vitesse',
+	intensity: 'Intensité',
+};
+
+const formatLabel = (value: string): string => {
+	return Traduction[value.toLowerCase() as keyof typeof Traduction] || value;
+};
+
 export default function HexaGraphic({ userId }: Performance) {
 	const performanceData = useFetchData<UserPerformance>(
 		fetchUserPerformance,
@@ -28,19 +41,6 @@ export default function HexaGraphic({ userId }: Performance) {
 		A: item.value,
 		fullMark: 150,
 	}));
-
-	//modifier le label des données pour correspondre avec la maquette
-	const formatLabel = (value: string): string => {
-		const translations: { [key: string]: string } = {
-			cardio: 'Cardio',
-			energy: 'Énergie',
-			endurance: 'Endurance',
-			strength: 'Force',
-			speed: 'Vitesse',
-			intensity: 'Intensité',
-		};
-		return translations[value.toLowerCase()] || value;
-	};
 
 	return (
 		<div className="w-full max-w-80 max-h-80 aspect-square bg-gray-800 rounded-lg flex flex-col">
