@@ -15,13 +15,12 @@ interface TimeSessionProps {
 }
 //ajout de fake data au début et à la fin du tableau pour correspondre au figma
 const extendData = (data: Array<{ day: number; sessionLength: number }>) => {
-	if (!data || data.length === 0) return [];
-	const extendedData = [
+	if (!data.length) return [];
+	return [
 		{ day: 0, sessionLength: data[0].sessionLength },
 		...data,
 		{ day: 8, sessionLength: data[data.length - 1].sessionLength },
 	];
-	return extendedData;
 };
 
 export default function TimeSession({ userId }: TimeSessionProps) {
