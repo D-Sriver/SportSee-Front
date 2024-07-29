@@ -1,33 +1,48 @@
 import { NutritionalValueProps } from '../../interface/fetch_interface';
 import { NutritionalItem } from './NutritionalItem';
 
+interface NutritionalItem {
+	icon: string;
+	key: string;
+	unit: string;
+	label: string;
+}
+const nutritionalItems: NutritionalItem[] = [
+	{
+		icon: '/img/calories.png',
+		key: 'calorieCount',
+		unit: 'kCal',
+		label: 'Calories',
+	},
+	{
+		icon: '/img/proteines.png',
+		key: 'proteinCount',
+		unit: 'g',
+		label: 'Protéines',
+	},
+	{
+		icon: '/img/glucides.png',
+		key: 'carbohydrateCount',
+		unit: 'g',
+		label: 'Glucides',
+	},
+	{ icon: '/img/lipides.png', key: 'lipidCount', unit: 'g', label: 'Lipides' },
+];
+
 export default function NutritionalValue({ userData }: NutritionalValueProps) {
 	return (
 		<div className="flex flex-col h-full justify-between">
-			<NutritionalItem
-				icon="/img/calories.png"
-				value={userData?.keyData.calorieCount ?? 0}
-				unit="kCal"
-				label="Calories"
-			/>
-			<NutritionalItem
-				icon="/img/proteines.png"
-				value={userData?.keyData.proteinCount ?? 0}
-				unit="g"
-				label="Protéines"
-			/>
-			<NutritionalItem
-				icon="/img/glucides.png"
-				value={userData?.keyData.carbohydrateCount ?? 0}
-				unit="g"
-				label="Glucides"
-			/>
-			<NutritionalItem
-				icon="/img/lipides.png"
-				value={userData?.keyData.lipidCount ?? 0}
-				unit="g"
-				label="Lipides"
-			/>
+			{nutritionalItems.map((item) => (
+				<NutritionalItem
+					key={item.key}
+					icon={item.icon}
+					value={
+						userData?.keyData[item.key as keyof typeof userData.keyData] ?? 0
+					}
+					unit={item.unit}
+					label={item.label}
+				/>
+			))}
 		</div>
 	);
 }
