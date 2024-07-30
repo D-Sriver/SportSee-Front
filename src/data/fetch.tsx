@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
 	UserActivity,
 	UserAverageSessions,
@@ -6,50 +7,66 @@ import {
 } from '../interface/fetch_interface';
 import UserModel from '../model/UserModel';
 
-import { mockData } from '../mock/mockData';
-//todo : passer a l'api avec axios
-//todo : changer Hexa intensité
+const BASE_URL = 'http://localhost:3000';
 
-/**
- * Récupère les données principales de l'utilisateur.
- * @param userId - L'ID de l'utilisateur.
- * @throws {Error} Si l'utilisateur n'est pas trouvé.
- */
 export const fetchUserMainData = async (
 	userId: number
 ): Promise<UserMainData> => {
-	const userData = mockData.USER_MAIN_DATA.find((user) => user.id === userId);
-	if (!userData) throw new Error('Utilisateur non trouvé');
-	return new UserModel(userData);
+	try {
+		const response = await axios.get(`${BASE_URL}/user/${userId}`);
+		return new UserModel(response.data.data);
+	} catch (error) {
+		console.error(
+			"Erreur lors de la récupération des données principales de l'utilisateur:",
+			error
+		);
+		throw new Error('Utilisateur non trouvé');
+	}
 };
 
 export const fetchUserActivity = async (
 	userId: number
 ): Promise<UserActivity> => {
-	const activityData = mockData.USER_ACTIVITY.find(
-		(activity) => activity.userId === userId
-	);
-	if (!activityData) throw new Error("Données d'activité non trouvées");
-	return activityData;
+	try {
+		const response = await axios.get(`${BASE_URL}/user/${userId}/activity`);
+		return response.data.data;
+	} catch (error) {
+		console.error(
+			"Erreur lors de la récupération des données d'activité:",
+			error
+		);
+		throw new Error("Données d'activité non trouvées");
+	}
 };
 
 export const fetchUserAverageSessions = async (
 	userId: number
 ): Promise<UserAverageSessions> => {
-	const sessionsData = mockData.USER_AVERAGE_SESSIONS.find(
-		(sessions) => sessions.userId === userId
-	);
-	if (!sessionsData)
+	try {
+		const response = await axios.get(
+			`${BASE_URL}/user/${userId}/average-sessions`
+		);
+		return response.data.data;
+	} catch (error) {
+		console.error(
+			'Erreur lors de la récupération des données de sessions moyennes:',
+			error
+		);
 		throw new Error('Données de sessions moyennes non trouvées');
-	return sessionsData;
+	}
 };
 
 export const fetchUserPerformance = async (
 	userId: number
 ): Promise<UserPerformance> => {
-	const performanceData = mockData.USER_PERFORMANCE.find(
-		(performance) => performance.userId === userId
-	);
-	if (!performanceData) throw new Error('Données de performance non trouvées');
-	return performanceData;
+	try {
+		const response = await axios.get(`${BASE_URL}/user/${userId}/performance`);
+		return response.data.data;
+	} catch (error) {
+		console.error(
+			'Erreur lors de la récupération des données de performance:',
+			error
+		);
+		throw new Error('Données de performance non trouvées');
+	}
 };
