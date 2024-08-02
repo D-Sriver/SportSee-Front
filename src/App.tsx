@@ -29,10 +29,10 @@ export default function App() {
 	}
 
 	return (
-		<div className="flex flex-col h-[70vh]">
+		<div className="flex flex-col w-full max-w-[1440px] min-h-[1024px] mx-auto pt-20 pl-20 pr-12">
 			<Hero userData={userData} />
-			<div className="flex flex-1 gap-8">
-				<div className="flex flex-col w-3/4 gap-8">
+			<div className="flex flex-col xl:flex-row gap-8 mt-8">
+				<div className="flex flex-col gap-8 flex-grow">
 					<ActivityChart userId={userData.id} />
 					<GraphicDetail userId={userData.id} />
 				</div>

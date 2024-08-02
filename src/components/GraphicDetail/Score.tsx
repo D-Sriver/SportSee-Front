@@ -24,7 +24,7 @@ export default function Score({ userId }: ScoreProps) {
 	const data = [{ scorePercentage, fill: '#FF0000' }];
 
 	return (
-		<div className="w-full max-w-80 max-h-80 aspect-square bg-zinc-50 rounded-lg flex flex-col relative">
+		<div className="w-[258px] h-[263px] bg-zinc-50 rounded-lg flex flex-col relative">
 			<h2 className="z-10 absolute left-4 top-4">Score</h2>
 			<ResponsiveContainer width="100%" height="100%">
 				<RadialBarChart

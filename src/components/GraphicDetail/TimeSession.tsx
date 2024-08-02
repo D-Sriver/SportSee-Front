@@ -37,7 +37,7 @@ export default function TimeSession({ userId }: TimeSessionProps) {
 	};
 
 	return (
-		<div className="bg-red-600 w-full max-w-80 max-h-80 aspect-square rounded-lg flex flex-col relative">
+		<div className="bg-[#FF0000] w-[258px] h-[263px] rounded-lg flex flex-col relative">
 			<div className="text-base font-medium flex justify-between w-3/4 absolute top-3 left-4 text-[#ffffff7f]">
 				Durée moyenne des sessions
 			</div>
@@ -57,17 +57,17 @@ export default function TimeSession({ userId }: TimeSessionProps) {
 					/>
 					<XAxis
 						dataKey="day"
-						padding={{ left: -5, right: -5 }}
+						padding={{ left: -25, right: -25 }}
 						axisLine={false}
 						tickLine={false}
 						tick={{
 							fill: 'rgba(255,255,255,0.6)',
-							fontSize: '0.85rem',
+							fontSize: '0.9rem',
 						}}
 						tickFormatter={formatLabel}
 						scale="point"
 					/>
-					<YAxis hide domain={['dataMin-10', 'dataMax+20']} />
+					<YAxis hide domain={['dataMin-20', 'dataMax+40']} />
 					<Tooltip content={CustomToolTip} cursor={<CustomHover />} />
 					<defs>
 						<linearGradient id="colorUv" x1="0%" y1="0" x2="100%" y2="0">

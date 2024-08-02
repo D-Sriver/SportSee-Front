@@ -29,7 +29,7 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
 	// Affiche le tooltip seulement si des données sont présentes
 	if (active && payload && payload.length) {
 		return (
-			<div className="bg-red-500 text-white p-2 text-xs">
+			<div className="bg-[#FF0000] text-white p-2 text-xs">
 				<p>{`${payload[0].value}kg`}</p>
 				<br />
 				<p>{`${payload[1].value}Kcal`}</p>
@@ -79,25 +79,25 @@ const ActivityChart = ({ userId }: ActivityChartProps) => {
 
 	// Rendu du graphique d'activité
 	return (
-		<div className="rounded-lg bg-zinc-50 p-4">
-			<div className="flex justify-between items-center">
-				<h2 className=" font-medium">Activité quotidienne</h2>
+		<div className="w-full min-w-[750px] h-[370px] rounded-lg bg-zinc-50 p-6">
+			{' '}
+			<div className="flex justify-between items-center mb-8">
+				<h2 className="text-lg font-medium">Activité quotidienne</h2>
 				<div className="flex items-center gap-8">
 					<div className="flex items-center">
 						<span className="w-2 h-2 bg-black rounded-full mr-2"></span>
 						<span className="text-sm text-gray-500">Poids (kg)</span>
 					</div>
 					<div className="flex items-center">
-						<span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+						<span className="w-2 h-2 bg-[#FF0000] rounded-full mr-2"></span>
 						<span className="text-sm text-gray-500">
 							Calories brûlées (kCal)
 						</span>
 					</div>
 				</div>
 			</div>
-
 			{/* Conteneur responsive pour le graphique */}
-			<ResponsiveContainer width="100%" height={300}>
+			<ResponsiveContainer width="100%" height={250}>
 				{/* Graphique à barres */}
 				<BarChart
 					data={activityData.sessions}

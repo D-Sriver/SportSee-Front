@@ -8,7 +8,7 @@ export default function Layout() {
 			<Header />
 			<div className="flex flex-1">
 				<SideMenu />
-				<main className="flex-grow p-12">
+				<main className="flex">
 					<Outlet />
 				</main>
 			</div>

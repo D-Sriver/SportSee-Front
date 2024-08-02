@@ -31,7 +31,7 @@ const nutritionalItems: NutritionalItem[] = [
 
 export default function NutritionalValue({ userData }: NutritionalValueProps) {
 	return (
-		<div className="flex flex-col h-full justify-between">
+		<div className="flex flex-row xl:flex-col gap-4 xl:w-[258px] xl:h-[665px] justify-between">
 			{nutritionalItems.map((item) => (
 				<NutritionalItem
 					key={item.key}
