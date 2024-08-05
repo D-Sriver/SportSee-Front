@@ -7,10 +7,19 @@ import {
 import useFetchData from '../../components/hook/useFetchData';
 import { fetchUserMainData } from '../../data/fetch';
 
+/**
+ * Interface définissant les propriétés du composant Score.
+ */
 interface ScoreProps {
+	/** L'ID de l'utilisateur, peut être undefined */
 	userId: number | undefined;
 }
 
+/**
+ * Composant Score qui affiche le score de l'utilisateur sous forme de graphique radial.
+ * @param {ScoreProps} props - Les propriétés du composant.
+ * @returns {JSX.Element} Le composant Score.
+ */
 export default function Score({ userId }: ScoreProps) {
 	const userData = useFetchData(fetchUserMainData, userId);
 
@@ -18,9 +27,18 @@ export default function Score({ userId }: ScoreProps) {
 		return <div>Chargement des données...</div>;
 	}
 
+	/**
+	 * Calcule le pourcentage du score de l'utilisateur.
+	 * @type {number}
+	 */
 	const scorePercentage = Math.round(
 		(userData.score ?? userData.todayScore ?? 0) * 100
 	);
+
+	/**
+	 * Données formatées pour le graphique radial.
+	 * @type {Array<{scorePercentage: number, fill: string}>}
+	 */
 	const data = [{ scorePercentage, fill: '#FF0000' }];
 
 	return (

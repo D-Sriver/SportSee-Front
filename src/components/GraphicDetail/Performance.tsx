@@ -26,6 +26,12 @@ const formatLabel = (value: string): string => {
 	return Traduction[value.toLowerCase() as keyof typeof Traduction] || value;
 };
 
+/**
+ * Composant HexaGraphic qui affiche un graphique radar des performances de l'utilisateur.
+ * @param {Performance} props - Les propriétés du composant.
+ * @param {number | undefined} props.userId - L'ID de l'utilisateur.
+ * @returns {JSX.Element} Le composant HexaGraphic.
+ */
 export default function HexaGraphic({ userId }: Performance) {
 	const performanceData = useFetchData<UserPerformance>(
 		fetchUserPerformance,

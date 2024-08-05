@@ -29,6 +29,12 @@ const nutritionalItems: NutritionalItem[] = [
 	{ icon: '/img/lipides.png', key: 'lipidCount', unit: 'g', label: 'Lipides' },
 ];
 
+/**
+ * Composant NutritionalValue qui affiche les valeurs nutritionnelles de l'utilisateur.
+ * @param {NutritionalValueProps} props - Les propriétés du composant.
+ * @param {UserMainData | null} props.userData - Les données de l'utilisateur.
+ * @returns {JSX.Element} Le composant NutritionalValue.
+ */
 export default function NutritionalValue({ userData }: NutritionalValueProps) {
 	return (
 		<div className="flex flex-row xl:flex-col gap-4 xl:w-[258px] xl:h-[665px] justify-between">

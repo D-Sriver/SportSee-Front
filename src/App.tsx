@@ -7,6 +7,11 @@ import NutritionalValue from './components/NutritionalValue/NutritionalValue';
 import { fetchUserMainData } from './data/fetch';
 import { UserMainData } from './interface/fetch_interface';
 
+/**
+ * Composant principal de l'application.
+ * Gère l'état global et le routage de l'application.
+ * @returns {JSX.Element} Le composant App.
+ */
 export default function App() {
 	const [userData, setUserData] = useState<UserMainData | null>(null);
 	const location = useLocation();

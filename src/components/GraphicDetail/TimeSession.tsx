@@ -23,6 +23,12 @@ const extendData = (data: Array<{ day: number; sessionLength: number }>) => {
 	];
 };
 
+/**
+ * Composant TimeSession qui affiche un graphique linéaire des sessions moyennes de l'utilisateur.
+ * @param {TimeSessionProps} props - Les propriétés du composant.
+ * @param {number | undefined} props.userId - L'ID de l'utilisateur.
+ * @returns {JSX.Element} Le composant TimeSession.
+ */
 export default function TimeSession({ userId }: TimeSessionProps) {
 	const sessionsData = useFetchData(fetchUserAverageSessions, userId);
 	const formattedData = sessionsData ? extendData(sessionsData.sessions) : [];
